@@ -38,6 +38,3 @@ app.listen(PORT, () => {
 app.get('/',(req,res,next)=>{
     res.render('index')
 })
-app.all('*',(req,res,next)=>{
-    res.render('index')
-})
