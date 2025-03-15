@@ -35,7 +35,6 @@
 </head>
 
 <body>
-<%- include('layout.ejs') %>
   <div class="hero_area">
     <!-- header section strats -->
     <header class="header_section">
@@ -303,30 +302,20 @@
                 <div class="carousel-item ">
                   <div class="detail-box">
                     <h4>
-                      Aloz den
+                      Priya sharma
                     </h4>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                      labore
-                      et
-                      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                      aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                      cillum
+                      Exceptional service! BlueCrush Media helped me establish a strong online presence. The attention to detail and creativity in their designs exceeded my expectations. Highly recommended!"
                     </p>
                   </div>
                 </div>
                 <div class="carousel-item ">
                   <div class="detail-box">
                     <h4>
-                      Aloz den
+                      vikrant mehta
                     </h4>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                      labore
-                      et
-                      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                      aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                      cillum
+                      I had an amazing experience with BlueCrush Media. Their team is professional, responsive, and truly understands the client’s needs. My project was delivered on time with outstanding quality!
                     </p>
                   </div>
                 </div>
@@ -360,25 +349,24 @@
     <div class="">
       <div class="row">
         <div class="col-md-8 mx-auto">
-          <form action="/contact" method="post">
+          <form id="contactForm">
             <div class="contact_form-container">
               <div>
                 <div>
-                  <input type="text" placeholder="Name" name="name" required>
+                  <input type="text" id="name" placeholder="Name" name="name" required>
                 </div>
                 <div>
-                  <input type="text" placeholder="Phone Number" name="number" required>
+                  <input type="text" id="number" placeholder="Phone Number" name="number" required>
                 </div>
                 <div>
-                  <input type="email" placeholder="Email" name="email" required>
+                  <input type="email" id="email" placeholder="Email" name="email" required>
                 </div>
                 <div class="">
-                  <input type="text" placeholder="Message" class="message_input" name="paragraph" required>
+                  <input type="text" id="message" placeholder="Message" class="message_input" name="paragraph" required>
                 </div>
-                <div class=" d-flex justify-content-center ">
-                  <button type="submit">
-                    Send
-                  </button>
+                <div class="d-flex justify-content-center">
+                  <button type="button" id="sendMessage">Send</button>
+
                 </div>
               </div>
             </div>
@@ -440,7 +428,35 @@
     </div>
   </section>
   <!-- footer section -->
-
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let sendButton = document.getElementById('sendMessage');
+        
+        // Check if button exists before adding event listener
+        if (sendButton) {
+            sendButton.addEventListener('click', function () {
+                let name = document.getElementById('name').value.trim();
+                let email = document.getElementById('email').value.trim();
+                let phone = document.getElementById('number').value.trim();
+                let message = document.getElementById('message').value.trim();
+    
+                // Check if all fields are filled
+                if (!name || !email || !phone || !message) {
+                    alert("Please fill in all fields before sending the message.");
+                    return;
+                }
+    
+                let subject = `Contact Form Submission from ${name}`;
+                let body = `Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0AMessage: ${message}`;
+    
+                // Open Gmail compose with pre-filled details
+                window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=contact@bluecrushmedia.in&su=${subject}&body=${body}`, '_blank');
+            });
+        } else {
+            console.error("❌ sendMessage button not found in DOM.");
+        }
+    });
+    </script>
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
 
