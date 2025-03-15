@@ -30,9 +30,11 @@ app.use((req, res, next) => {
 
 
 // Start Server
-app.listen(8080, () => {
-    console.log('Server running on port 3000');
-})
+const PORT = 8000; // or the port you actually want
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
 app.get('/',(req,res,next)=>{
     res.render('index')
 })
