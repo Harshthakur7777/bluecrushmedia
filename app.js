@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 
 
 // Start Server
-const PORT = 8000; // or the port you actually want
+const PORT = 3000; // or the port you actually want
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
